@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+    <link rel="stylesheet" href="calc.css">
+</head>
+<body>
+    <div class="container">
+        <div id="result">0</div>
+        <div>
+            <button class="btn" onclick="clearResult()">C</button>
+            <button class="btn" onclick="deleteLastCharacter()"><</button>
+        </div>
+    <div>
+            <button class="btn" onclick="appendNumber('7')">7</button>
+            <button class="btn" onclick="appendNumber('8')">8</button>
+            <button class="btn" onclick="appendNumber('9')">9</button>
+            <button class="btn" onclick="appendOperator('/')">/</button>
+        </div>
+        <div>
+            <button class="btn" onclick="appendNumber('4')">4</button>
+            <button class="btn" onclick="appendNumber('5')">5</button>
+            <button class="btn" onclick="appendNumber('6')">6</button>
+            <button class="btn" onclick="appendOperator('*')">*</button>
+        </div>
+        <div>
+            <button class="btn" onclick="appendNumber('1')">1</button>
+            <button class="btn" onclick="appendNumber('2')">2</button>
+            <button class="btn" onclick="appendNumber('3')">3</button>
+            <button class="btn" onclick="appendOperator('-')">-</button>
+        </div>
+        <div>
+            <button class="btn" onclick="appendNumber('0')">0</button>
+            <button class="btn" onclick="appendOperator('.')">.</button>
+            <button class="btn" onclick="calculateResult()">=</button>
+            <button class="btn" onclick="appendOperator('+')">+</button>
+        </div>
+    </div>
+
+    <script>
+        let result = document.getElementById('result');
+        
+        function appendNumber(number) {
+            if (result.innerText === '0') {
+                result.innerText = number;
+            } else {
+                result.innerText += number;
+            }
+        }
+        
+        function appendOperator(operator) {
+            result.innerText += operator;
+        }
+        
+        function calculateResult() {
+            let expression = result.innerText;
+            let answer = eval(expression);
+            result.innerText = answer;
+        }
+        
+        function clearResult() {
+            result.innerText = '0';
+        }
+        
+        function deleteLastCharacter() {
+            let currentExpression = result.innerText;
+            result.innerText = currentExpression.slice(0, -1);
+        }
+    </script>
+</body>
+</html>
